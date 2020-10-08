@@ -1,0 +1,179 @@
+
+<OperatorWindow>:      
+    MDBoxLayout:
+        orientation: "vertical"
+        
+        MDBoxLayout:
+            size_hint_y : None
+            height : "60dp"
+            MDToolbar:
+                title : "CSX POS System"
+                
+                halign: "center"
+                MDFlatButton: 
+                    text: "LogOut"
+                    on_release : root.logout()
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                     
+                
+
+            
+            
+        MDBoxLayout:
+            md_bg_color : app.theme_cls.primary_color
+            size_hint_y : None
+            height:"40dp"
+            
+            MDFlatButton:
+                text : "Oty"
+                size_hint_x : 0.2
+            MDFlatButton:
+                id : cur_item
+                text : "Current Item"
+                size_hint_x : 0.4
+            MDFlatButton:
+                id : cur_price
+                text : "0.00"
+                size_hint_x : 0.2
+        MDBoxLayout:
+            orientation : "vertical"
+            size_hint_y : None
+            height : "700dp"
+            
+            MDBoxLayout:
+                id : main
+                size_hint_y : 700
+                
+                spacing : "4dp"
+                padding : "4dp"
+                MDBoxLayout:
+                    spacing : "3dp"
+                    padding : "3dp"
+                    
+                    orientation: "vertical"
+                    
+                    MDBoxLayout:
+                        id : product_details 
+                        size_hint_y : None
+                        height : "40dp"
+                        md_bg_color : app.theme_cls.primary_color
+                        
+                        MDFlatButton:
+                            text : "Oty"
+                            size_hint_x : 0.1
+                        
+                        MDFlatButton:
+                            text : "Product Code"
+                            size_hint_x : 0.2
+                            
+                        MDFlatButton:
+                            text : "Disc"
+                            size_hint_x : 0.1
+                        MDFlatButton:
+                            text : "Disc %"
+                            size_hint_x : 0.1
+                        MDFlatButton:
+                            text : "GST"
+                            size_hint_x : 0.1
+                        MDFlatButton:
+                            text : "Price"
+                            size_hint_x : 0.1
+                        MDFlatButton:
+                            text : "Product Total"
+                            size_hint_x : 0.3
+
+                    MDBoxLayout:
+                        id : product_inputs
+                        size_hint_y : None
+                        height : "40dp"
+                        md_bg_color : app.theme_cls.primary_color
+                        
+                        TextInput:
+                            size_hint_x : 0.1 
+                            id : qty_inp
+                        TextInput:
+                            size_hint_x : 0.2
+                            id : code_inp
+                            multiline: False
+                            on_text_validate : root.update_purchase()
+                        TextInput:
+                            size_hint_x : 0.1
+                        TextInput:
+                            id : discp_inp
+                            size_hint_x : 0.1
+                        TextInput:
+                            id : gst_inp
+                            size_hint_x : 0.1
+                        TextInput:
+                            id : price_inp
+                            size_hint_x : 0.1
+                        TextInput:
+                            id : product_total_inp
+                            size_hint_x : 0.3
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        id : add_to_cart
+                        MDBoxLayout:
+                            size_hint_y : None
+                            height : "40dp"
+                            md_bg_color : app.theme_cls.primary_color
+                            MDLabel :
+                                text : "Code"
+                                size_hint_x : 0.1 
+                            MDLabel :
+                                text : "Product Name"
+                                size_hint_x : 0.2 
+                            MDLabel :
+                                text : "Qty"
+                                size_hint_x : 0.1 
+                            MDLabel :
+                                text : "Disc"
+                                size_hint_x : 0.1 
+                            MDLabel :
+                                text : "Price"
+                                size_hint_x : 0.1 
+                            MDLabel :
+                                text : "Product Total"
+                                size_hint_x : 0.2 
+                        MDGridLayout:
+                            id : product_container
+                            cols : 1
+                    
+
+                    Widget:
+                    ScrollView:
+                    
+        
+                        
+                MDBoxLayout:
+                    size_hint_x : 0.2
+                    
+                    id : preview
+                    TextInput:
+                        orientation : "vertical" 
+                        multiline : True
+                        id : receipt_preview
+                        readonly: True
+                        text : "The Collector\n123 Main St\nknowhwre,Space \n\nTel: (555)-123-456\nReceipt No.: \nDate: \n\n "
+                        
+                        
+                        
+                         
+                    
+        MDBoxLayout :
+            md_bg_color: app.theme_cls.primary_color
+            size_hint_y : None
+            height : "40dp"
+            
+            MDLabel:
+                text: "Maintained by CSX pvt ltd."
+                halign : "center"
+                specific_text_color : [1,1,1,1]
+                theme_text_color : "Secondary"
+                
+                
+           
+        
+        Widget:
+        ScrollView:
+    
