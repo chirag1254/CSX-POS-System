@@ -1,0 +1,194 @@
+#: import Window kivy.core.window.Window
+<AdminWindow>:
+    MDBoxLayout:
+        
+        id : main_layout
+        orientation : 'vertical'
+        size_hint_x :100
+        MDBoxLayout:
+            id : top_nav
+            size_hint_y : 0.06
+            md_bg_color : app.theme_cls.primary_color
+
+            MDLabel : 
+                text : "Admin Dashboard"
+                
+                bold : True
+                font_size :"20sp"
+                
+                theme_text_color : "Custom"
+                text_color : [1,1,1,1]
+            
+            MDFlatButton :
+                text : "file"
+                theme_text_color : "Custom"
+                text_color : [1,1,1,1]
+                md_bg_color : [0,0,0,0.7]
+                size_hint_y:1
+                on_release : file_dropdown.open(self)
+
+                Widget:
+                    on_parent : file_dropdown.dismiss()
+                    DropDown:
+                        id:file_dropdown
+                        MDFlatButton:
+                            id : close
+                            md_bg_color : [0,0,0,0.3]
+                            text : "logout"
+                            on_release: root.logout()
+                        MDFlatButton:
+                            id : close
+                            md_bg_color : [0,0,0,0.3]
+                            text : "quit"
+                            on_release: Window.close()
+            
+        MDBoxLayout:
+            size_hint_y : 0.94
+            orientation : "vertical"
+            id : main_tab_box
+            MDBoxLayout:
+                size_hint_y : 0.06    
+                
+            
+                MDTabs:
+                    id : user_tabs
+                
+                    Tab:
+                        id : user_tab
+                        text : "Manage Users"
+                        
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            MDBoxLayout:
+                                id : user_box
+                                size_hint_y : 1
+                                md_bg_color:[1,1,1,1]
+                                padding : (20,10)
+                            MDBoxLayout:
+                                id : ops_fields
+                                size_hint_y : 0.09
+                                spacing : 10
+                                padding : 10
+                                
+
+                            MDBoxLayout:
+                                id : ops_btns
+                                size_hint_y: None
+                                height : "40dp"
+                                spacing : 10
+                                padding : 10
+                                MDFlatButton:
+                                    id : crud_add
+                                    text : 'Add User'
+                                
+                                    size_hint_x: 20
+                
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release : root.add_user_fields()
+                                    
+                                MDFlatButton:
+                                    id : crud_update
+                                    text : "Update User"
+                                    size_hint_x:20
+                                
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release : root.update_user_fields()
+                                MDFlatButton:
+                                    id : crud_remove
+                                    text : "Remove User"
+                                    size_hint_x: 20
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release : root.remove_user_field()
+                                
+                                
+                                                
+
+                    Tab:
+                        id: products_tab
+                        text : "Manage Products"
+                        MDBoxLayout:
+                            orientation:"vertical"
+                            MDBoxLayout:
+                                id : products_box
+                                size_hint_y : 1
+                                md_bg_color:[1,1,1,1]
+                                padding : (20,10)
+                            MDBoxLayout:
+                                id : ops_fields_p
+                                size_hint_y : 0.09
+                                spacing : 10
+                                padding : 10
+            
+                            MDBoxLayout:
+                                id : ops_btns_p
+                                size_hint_y: None
+                                height : "40dp"
+                                spacing : 10
+                                padding : 10
+                                MDFlatButton:
+                                    id : crud_add_p
+                                    text : 'Add Product'
+                                
+                                    size_hint_x: 20
+                
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release : root.add_product_fields()
+                                    
+                                MDFlatButton:
+                                    id : crud_update_p
+                                    text : "Update Product"
+                                    size_hint_x:20
+                                
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release: root.update_product_fields()
+                                MDFlatButton:
+                                    id : crud_remove_p
+                                    text : "Remove Product"
+                                    size_hint_x: 20
+                                    md_bg_color : [0.3,.3,.3,1]
+                                    text_color: [1,1,1,1]
+                                    font_size : "15sp"
+                                    on_release : root.remove_product_field()
+                        
+
+                    Tab:
+                        id : analysis_tab
+                        text : "Product Analysis"
+                        MDBoxLayout:
+                            id : analysis_box
+                            orientation : "vertical"
+                            size_hint_y : 1
+                            md_bg_color:[1,1,1,1]
+                            padding : (20,10)
+                            MDBoxLayout:
+                                size_hint_y:0.1
+                                
+                                spacing : 20
+                                Spinner:
+                                    text : "Choose Product"
+                                    id : target_product
+                                    size_hint_y: None
+                                    height : "45dp"
+                                MDFlatButton:
+                                    id : submit_analysis
+                                    text: "View Stats"
+                                    size_hint_x : .3
+                                    on_release : root.view_stats()
+                                    md_bg_color : app.theme_cls.primary_color
+                                    
+                            MDBoxLayout:
+                                id : analysis_res
+                                size_hint_y: 0.9
+
+                                
+
